@@ -11,12 +11,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Programmatically set the initial window on the app. This wraps the main viewcontroller in a navigation controller, sets it as the root vc, and make the window the key window (main window) and visible
+        // SceneDelegate is used for this as of iOS 13.0, and AppDelegate had this responsibility prior. If you want to support versions older than 13.0, you will have to do the work in AppDelegate instead.
+        guard let windowScene = (scene as? UIWindowScene), let searchVC = SearchViewController(coder: NSCoder()) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        
+        let navigation = UINavigationController(rootViewController: searchVC)
+        navigation.navigationBar.backgroundColor = .white
+        self.window?.rootViewController = navigation
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

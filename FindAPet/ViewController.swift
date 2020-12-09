@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! SearchViewController
+        let vc = segue.destination as! SearchViewController_deprecated
         vc.finalZipcode = self.zipcodeText
     }
 }

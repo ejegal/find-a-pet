@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SearchViewController_deprecated: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //declarations
     var finalZipcode = ""
@@ -100,13 +100,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        //var content = cell.defaultContentConfiguration()
         
         let currentAnimal = fetchedAnimals[indexPath.row]
-        content.text = currentAnimal.name
-        content.secondaryText = "\(currentAnimal.gender ?? "") \(currentAnimal.type ?? "")"
+        //content.text = currentAnimal.name
+        //content.secondaryText = "\(currentAnimal.gender ?? "") \(currentAnimal.type ?? "")"
         
-        cell.contentConfiguration = content
+        //cell.contentConfiguration = content
 
         return cell
     }
